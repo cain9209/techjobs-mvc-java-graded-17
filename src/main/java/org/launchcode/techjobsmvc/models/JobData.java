@@ -18,7 +18,7 @@ import java.util.List;
  * Created by LaunchCode
  */
 public class JobData {
-
+// Gathers the data from CSV file so that we can gather and send to the controller //
     private static final String DATA_FILE = "job_data.csv";
     private static boolean isDataLoaded = false;
 
@@ -41,7 +41,7 @@ public class JobData {
         // Bonus mission; normal version returns allJobs
         return new ArrayList<>(allJobs);
     }
-
+// We use the static methods from this class later on to search the data //
     /**
      * Returns the results of searching the Jobs data by field and search term.
      *

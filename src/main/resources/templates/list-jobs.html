@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head th:replace="~{fragments :: head}">
 </head>
 <body>
@@ -12,7 +12,17 @@
 
   <!-- TODO #1 - Use a loop to display job results in a table. -->
 
+    <table class="job-listing">
+        <th:block th:each="job : ${jobs}">
+            <td th:text="${job}">
+            </td>
+        </th:block>
+    </table>
+            </td>
+        </th:block>
+    </table>
 </div>
 
 </body>
 </html>
+

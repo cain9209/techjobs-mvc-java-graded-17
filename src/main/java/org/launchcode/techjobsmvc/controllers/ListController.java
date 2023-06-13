@@ -17,10 +17,10 @@ import java.util.HashMap;
 @Controller
 @RequestMapping(value = "list")
 public class ListController {
-
+  // instantiates the columnChoices and tableChoices to store our choices //
     static HashMap<String, String> columnChoices = new HashMap<>();
     static HashMap<String, Object> tableChoices = new HashMap<>();
-
+// pulls data from JobData Class which pulled data from the CSV file //
     public ListController () {
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
@@ -33,6 +33,7 @@ public class ListController {
         tableChoices.put("positionType", JobData.getAllPositionTypes());
         tableChoices.put("coreCompetency", JobData.getAllCoreCompetency());
     }
+// path is what the value is, this will take in the data from the web page and pull data from teh JobData Class //
 
     @GetMapping(value = "")
     public String list(Model model) {
@@ -45,7 +46,7 @@ public class ListController {
 
         return "list";
     }
-
+// Get request is at /jobs //
     @GetMapping(value = "jobs")
     public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam(required = false) String value) {
         ArrayList<Job> jobs;
@@ -61,4 +62,8 @@ public class ListController {
         return "list-jobs";
     }
 }
-
+// This method handles GET requests to the /jobs path.
+//It accepts two query parameters, column and an optional value.
+//It fetches a list of jobs based on the provided parameters.
+//It adds the jobs and a title to the model.
+//It returns the name of the view to be rendered.
