@@ -21,7 +21,7 @@
     <!-- TODO #2: Complete the View Jobs By Category Table. -->
 
     <td>
-      <a th:href="@{/list/jobs(column='all')}">View All Jobs</a>
+     <li><a th:href="@{/list/jobs(column='all')}">View All Jobs</a></li>
     </td> <!-- Feel free to remove or modify this element if necessary. -->
 
     <td th:each="category : ${tableChoices}">
