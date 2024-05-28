@@ -34,15 +34,15 @@ public class SearchController {
         model.addAttribute("columns", columnChoices);
         ArrayList<Job> jobs;
 
-        if (searchTerm.equalsIgnoreCase("all") || searchTerm.equals("")) {
+        if (searchType.equalsIgnoreCase("all") || searchTerm.isBlank()) {
             jobs = JobData.findAll();
         } else {
             jobs = JobData.findByColumnAndValue(searchType, searchTerm);
         }
 
         model.addAttribute("jobs", jobs);
-        model.addAttribute("id", searchType);
-        model.addAttribute("value", searchTerm);
+        model.addAttribute("searchType", searchType);
+        model.addAttribute("searchTerm", searchTerm);
 
         return "search";
     }

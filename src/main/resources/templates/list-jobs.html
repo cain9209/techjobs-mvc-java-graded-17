@@ -14,11 +14,12 @@
     <!-- TODO #1 - Use a loop to display job results in a table. -->
     <!--// table heading -->
 
-    <div th:each="job : ${jobs}" class="job-listing-wrapper">
+    <div>
 
-    <table class="job-listing">
+    <table  th:each="job : ${jobs}" class="job-listing">
 
         <tbody>
+
         <tr>
             <td>ID</td>
             <td th:text="${job.id}"></td>
