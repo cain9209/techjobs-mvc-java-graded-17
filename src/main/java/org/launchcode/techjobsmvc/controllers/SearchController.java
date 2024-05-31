@@ -29,6 +29,7 @@ public class SearchController {
     }
 
     // TODO #3 - Create a handler to process a search request and render the updated search view.
+
     @PostMapping(value = "results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
         model.addAttribute("columns", columnChoices);
@@ -44,8 +45,9 @@ public class SearchController {
         model.addAttribute("searchType", searchType);
         model.addAttribute("searchTerm", searchTerm);
 
-        return "search";
+        return "index";
     }
 
 }
 
+// code needs to use the index.html file to render //
