@@ -35,16 +35,24 @@ public class SearchController {
         model.addAttribute("columns", columnChoices);
         ArrayList<Job> jobs;
 
-        if (searchType.equalsIgnoreCase("all") || searchTerm.isBlank()) {
-            jobs = JobData.findAll();
-            model.addAttribute("title","All Jobs");
+        if (searchTerm != null && !searchTerm.isBlank()) {
+            if (searchType.equalsIgnoreCase("all")) {
+                // If searchType is "all", search all columns for the searchTerm
+                jobs = JobData.findByValue(searchTerm);
+                model.addAttribute("title", "Jobs with keyword: " + searchTerm);
+            } else {
+                // If a specific searchType is selected, search by that column
+                jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+                model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
+            }
         } else {
-            jobs = JobData.findByColumnAndValue(searchType, searchTerm);
-            model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
+            // If no searchTerm is provided, return all jobs
+            jobs = JobData.findAll();
+            model.addAttribute("title", "All Jobs");
         }
 
         model.addAttribute("jobs", jobs);
-       model.addAttribute("columns", columnChoices);
+        model.addAttribute("columns", columnChoices);
 
         return "search";
     }
